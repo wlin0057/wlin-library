@@ -126,7 +126,6 @@ const validateConfirmPassword = (blur) => {
                 class="form-control"
                 id="password"
                 @blur="() => validatePassword(true)"
-                @input="() => validatePassword(false)"
                 v-model="formData.password"
               />
               <div v-if="errors.password" class="text-danger">{{ errors.password }}</div>
@@ -138,7 +137,6 @@ const validateConfirmPassword = (blur) => {
                 class="form-control"
                 id="confirmPassword"
                 @blur="() => validateConfirmPassword(true)"
-                @input="() => validateConfirmPassword(false)"
                 v-model="formData.confirmPassword"
               />
               <div v-if="errors.confirmPassword" class="text-danger">
