@@ -17,6 +17,7 @@ const submittedCards = ref([])
 const submitForm = () => {
   validateName(true)
   validatePassword(true)
+  validateConfirmPassword(true)
   if (!errors.value.username && !errors.value.password) {
     submittedCards.value.push({ ...formData.value })
     clearForm()
@@ -32,6 +33,7 @@ const clearForm = () => {
     reason: '',
     gender: ''
   }
+  reasonMessage.value = null
 }
 
 const errors = ref({
@@ -82,6 +84,12 @@ const validateConfirmPassword = (blur) => {
   } else {
     errors.value.confirmPassword = null
   }
+}
+const reasonMessage = ref(null)
+
+const validateReason = () => {
+  const text = (formData.value.reason || '').toLowerCase()
+  reasonMessage.value = text.includes('friend') ? 'Great to have a friend' : null
 }
 </script>
 
@@ -164,8 +172,11 @@ const validateConfirmPassword = (blur) => {
               id="reason"
               rows="3"
               v-model="formData.reason"
+              @input="validateReason"
             ></textarea>
+            <div v-if="reasonMessage" class="text-success">{{ reasonMessage }}</div>
           </div>
+
           <div class="text-center">
             <button type="submit" class="btn btn-primary me-2">Submit</button>
             <button type="button" class="btn btn-secondary" @click="clearForm">Clear</button>
