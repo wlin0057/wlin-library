@@ -111,6 +111,15 @@ const validateConfirmPassword = (blur) => {
             </div>
 
             <div class="col-md-6 col-sm-6">
+              <label for="gender" class="form-label">Gender</label>
+              <select class="form-select" id="gender" v-model="formData.gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="col-md-6 col-sm-6">
               <label for="password" class="form-label">Password</label>
               <input
                 type="password"
@@ -148,14 +157,6 @@ const validateConfirmPassword = (blur) => {
                 />
                 <label class="form-check-label" for="isAustralian">Australian Resident?</label>
               </div>
-            </div>
-            <div class="col-md-6 col-sm-6">
-              <label for="gender" class="form-label">Gender</label>
-              <select class="form-select" id="gender" v-model="formData.gender" required>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
-              </select>
             </div>
           </div>
           <div class="mb-3">
